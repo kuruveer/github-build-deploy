@@ -67,6 +67,16 @@ jobs:
         run: ls
       - name: Deploy
         run: echo "Deploying..."
+      - name: run sample commands
+        run:  |
+          ssh ${{env.NAME}} << EOF
+            rm -rf hello-world
+            mkdir hello-world
+            cd hello-world
+            echo "hey hi" > index.html
+            cat index.html
+          EOF
+        shell: bash
       - name: run commands
         run:  |
           ssh ${{env.NAME}} << EOF
