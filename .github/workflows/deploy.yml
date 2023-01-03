@@ -67,18 +67,18 @@ jobs:
         run: ls
       - name: Deploy
         run: echo "Deploying..."
+      - name: run commands
+        run:  |
+          scp -r build-files/* ${{env.NAME}}:~/my-day
+        shell: bash
       - name: run sample commands
         run:  |
           ssh ${{env.NAME}} << EOF
+            ls
             rm -rf hello-world
             mkdir hello-world
             cd hello-world
             echo "hey hi" > index.html
             cat index.html
           EOF
-        shell: bash
-      - name: run commands
-        run:  |
-          scp -r build-files/* ${{env.NAME}}:~/my-day
-          
         shell: bash
