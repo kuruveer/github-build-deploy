@@ -79,7 +79,6 @@ jobs:
         shell: bash
       - name: run commands
         run:  |
-          ssh ${{env.NAME}} << EOF
-            scp -r build-files/* deploy-server:~/my-day
-          EOF
+          scp -r build-files/* ${{env.NAME}}:~/my-day
+          
         shell: bash
