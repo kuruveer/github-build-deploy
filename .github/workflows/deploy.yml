@@ -80,6 +80,6 @@ jobs:
       - name: run commands
         run:  |
           ssh ${{env.NAME}} << EOF
-            scp -r build-files/* ${{env.NAME}}:~/my-day
+            scp -r build-files/* deploy-server:~/my-day
           EOF
         shell: bash
